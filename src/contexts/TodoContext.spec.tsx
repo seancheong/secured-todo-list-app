@@ -1,17 +1,12 @@
-import {
-  fireEvent,
-  render,
-  screen,
-  waitFor
-} from '@testing-library/react-native';
+import { fireEvent, render, screen } from '@testing-library/react-native';
+import { useEffect } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import { TodoProvider, useTodoContext } from './TodoContext';
 import { todosAsList } from '../selectors/todoSelectors';
 import { TodoActionTypes } from '../models';
-import { useEffect } from 'react';
 
 describe('TodoContext', () => {
-  it('should handle the ADD action', async () => {
+  it('should handle the ADD action', () => {
     // given
     const expectedTodoLength = '1';
     const TestComponent = () => {
@@ -43,15 +38,13 @@ describe('TodoContext', () => {
     const button = screen.getByText('Add');
 
     // when
-    await waitFor(async () => {
-      fireEvent.press(button);
-    });
+    fireEvent.press(button);
 
     // then
     expect(screen.getByText(expectedTodoLength)).toBeDefined();
   });
 
-  it('should handle the UPDATE action', async () => {
+  it('should handle the UPDATE action', () => {
     // given
     const todoItem = { id: '1', label: 'test', isCompleted: false };
     const updatedLabel = 'updated';
@@ -94,15 +87,13 @@ describe('TodoContext', () => {
     const button = screen.getByText('Update');
 
     // when
-    await waitFor(async () => {
-      fireEvent.press(button);
-    });
+    fireEvent.press(button);
 
     // then
     expect(screen.getByText(updatedLabel)).toBeDefined();
   });
 
-  it('should handle the DELETE action', async () => {
+  it('should handle the DELETE action', () => {
     // given
     const id = '1';
     const expectedTodoLength = '0';
@@ -144,9 +135,7 @@ describe('TodoContext', () => {
     const button = screen.getByText('Delete');
 
     // when
-    await waitFor(async () => {
-      fireEvent.press(button);
-    });
+    fireEvent.press(button);
 
     // then
     expect(screen.getByText(expectedTodoLength)).toBeDefined();
