@@ -5,6 +5,8 @@ export const todoReducer = (
   action: TodoAction
 ): TodoState => {
   switch (action.type) {
+    case TodoActionTypes.INITIAL_TODO:
+      return action.payload;
     case TodoActionTypes.ADD_TODO:
       return {
         ...state,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -25,7 +25,7 @@ export const EditableLabel: React.FC<IProps> = ({
   isStikethrough = false,
   style
 }) => {
-  const [isEditing, setIsEditing] = React.useState<boolean>(label === '');
+  const [isEditing, setIsEditing] = useState<boolean>(label === '');
   const textStyle: TextStyle = {
     textDecorationLine: isStikethrough ? 'line-through' : 'none'
   };

@@ -2,6 +2,32 @@ import { TodoAction, TodoActionTypes } from '../models';
 import { todoReducer } from './todoReducer';
 
 describe('todoReducer', () => {
+  it('should handle the INITIAL action', () => {
+    // given
+    const initialState = {};
+    const expectedState = {
+      1: {
+        id: '1',
+        label: 'test 1',
+        isCompleted: true
+      },
+      2: {
+        id: '2',
+        label: 'test 2',
+        isCompleted: false
+      }
+    };
+
+    // when
+    const action: TodoAction = {
+      type: TodoActionTypes.INITIAL_TODO,
+      payload: expectedState
+    };
+
+    // then
+    expect(todoReducer(initialState, action)).toEqual(expectedState);
+  });
+
   it('should handle the ADD action', () => {
     // given
     const initialState = {};
