@@ -1,4 +1,11 @@
-import { Button, StyleSheet, Text, TextStyle, View } from 'react-native';
+import {
+  Button,
+  StyleSheet,
+  Text,
+  TextStyle,
+  View,
+  ViewStyle
+} from 'react-native';
 import React, { memo } from 'react';
 import { Checkbox } from './Checkbox';
 
@@ -6,6 +13,7 @@ interface IProps {
   id: string;
   label: string;
   isCompleted: boolean;
+  isSelected: boolean;
   onToggle: () => void;
   onItemSelected: () => void;
   onRemove: () => void;
@@ -16,6 +24,7 @@ interface IProps {
 const TodoItemComponent: React.FC<IProps> = ({
   label,
   isCompleted,
+  isSelected,
   onToggle,
   onItemSelected,
   onRemove
@@ -24,8 +33,12 @@ const TodoItemComponent: React.FC<IProps> = ({
     textDecorationLine: isCompleted ? 'line-through' : 'none'
   };
 
+  const containerStyle: ViewStyle = {
+    backgroundColor: isSelected ? '#e0e0e0' : 'transparent'
+  };
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, containerStyle]}>
       <Checkbox
         isChecked={isCompleted}
         onToggle={onToggle}

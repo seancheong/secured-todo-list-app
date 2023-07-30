@@ -53,6 +53,7 @@ export const TodoList: React.FC = () => {
         renderItem={({ item }) => (
           <TodoItem
             {...item}
+            isSelected={selectedItem?.id === item.id}
             onToggle={() => handleToggle(item.id)}
             onItemSelected={() => {
               setSelectedItem(item);
