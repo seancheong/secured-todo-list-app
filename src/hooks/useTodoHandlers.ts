@@ -6,10 +6,10 @@ export const useTodoHandlers = (
   state: TodoState,
   dispatch: React.Dispatch<TodoAction>
 ) => {
-  const handleAdd = () => {
+  const handleAdd = (label: string) => {
     dispatch({
       type: TodoActionTypes.ADD_TODO,
-      payload: { id: v4(), label: '', isCompleted: false }
+      payload: { id: v4(), label, isCompleted: false }
     });
   };
 

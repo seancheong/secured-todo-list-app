@@ -1,4 +1,4 @@
-import { NavigationContainer } from '@react-navigation/native';
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { AuthenticationScreen } from './screens/AuthenticationScreen';
@@ -9,7 +9,12 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 export default () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      theme={{
+        ...DefaultTheme,
+        colors: { ...DefaultTheme.colors, background: '#ffffff' }
+      }}
+    >
       <Stack.Navigator initialRouteName={Route.Authentication}>
         <Stack.Screen
           name={Route.Authentication}

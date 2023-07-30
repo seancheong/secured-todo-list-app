@@ -23,11 +23,11 @@ describe('TodoList Component', () => {
   };
 
   const addNewItem = (newItem: string) => {
-    const addButton = screen.getByText('+');
-    fireEvent.press(addButton);
-    const input = screen.getByDisplayValue('');
+    const input = screen.getByPlaceholderText('Please enter label...');
     fireEvent.changeText(input, newItem);
     fireEvent(input, 'blur');
+    const addButton = screen.getByText('Add');
+    fireEvent.press(addButton);
   };
 
   it('should able to add a new item', () => {
@@ -68,6 +68,8 @@ describe('TodoList Component', () => {
     const input = screen.getByDisplayValue(newItem);
     fireEvent.changeText(input, updatedItem);
     fireEvent(input, 'blur');
+    const updateButton = screen.getByText('Update');
+    fireEvent.press(updateButton);
 
     // then
     expect(screen.getByText(updatedItem)).toBeDefined();

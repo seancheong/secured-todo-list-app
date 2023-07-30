@@ -1,14 +1,13 @@
-import { Button, StyleSheet, View } from 'react-native';
+import { Button, StyleSheet, Text, TextStyle, View } from 'react-native';
 import React, { memo } from 'react';
 import { Checkbox } from './Checkbox';
-import { EditableLabel } from './EditableLabel';
 
 interface IProps {
   id: string;
   label: string;
   isCompleted: boolean;
   onToggle: () => void;
-  onLabelChange: (label: string) => void;
+  onItemSelected: () => void;
   onRemove: () => void;
 }
 
@@ -18,9 +17,13 @@ const TodoItemComponent: React.FC<IProps> = ({
   label,
   isCompleted,
   onToggle,
-  onLabelChange,
+  onItemSelected,
   onRemove
 }) => {
+  const textStyle: TextStyle = {
+    textDecorationLine: isCompleted ? 'line-through' : 'none'
+  };
+
   return (
     <View style={styles.container}>
       <Checkbox
@@ -29,12 +32,9 @@ const TodoItemComponent: React.FC<IProps> = ({
         size={36}
         style={styles.checkbox}
       />
-      <EditableLabel
-        label={label}
-        onChange={onLabelChange}
-        isStikethrough={isCompleted}
-        style={styles.label}
-      />
+      <Text onPress={onItemSelected} style={[styles.label, textStyle]}>
+        {label}
+      </Text>
       <Button title='Remove' onPress={onRemove} color='red' />
     </View>
   );
@@ -55,7 +55,9 @@ const styles = StyleSheet.create({
     marginRight: 8
   },
   label: {
-    flexShrink: 1
+    flexShrink: 1,
+    fontSize: 20,
+    width: '100%'
   },
   button: {
     color: 'red'
