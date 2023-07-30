@@ -21,8 +21,8 @@ type Props = StackScreenProps<RootStackParamList, Route.Authentication>;
 export const AuthenticationScreen: React.FC<Props> = ({ navigation }) => {
   const { isEnrolled, checkEnrolledLevel, tryAuthenticate } = useAuthHandlers();
   const message = isEnrolled
-    ? 'Please enter your device passcode to continue'
-    : 'Please set up a passcode in Settings page before using this app';
+    ? 'Please authenticate to continue'
+    : 'Please set up an authentication in Settings page before using this app';
   const buttonText = isEnrolled ? 'Authenticate' : 'Go to Settings';
 
   useEffect(() => {

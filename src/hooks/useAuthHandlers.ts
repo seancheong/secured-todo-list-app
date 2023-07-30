@@ -15,7 +15,7 @@ export const useAuthHandlers = () => {
   const tryAuthenticate = async () => {
     try {
       const result = await LocalAuthentication.authenticateAsync({
-        promptMessage: 'Please enter your device passcode to continue'
+        promptMessage: 'Please authenticate to continue'
       });
 
       return result.success;
