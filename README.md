@@ -4,6 +4,8 @@
 
 It is a Todo List mobile application that helps users to keep track of their tasks efficiently. A standout feature is its local authentication mechanism, ensuring that the app can only be accessed after users have entered their passcode. The application is built with modern technologies, such as React Native and Typescript, utilizing React context and hooks to manage state and logic. Besides that, the application also includes unit tests written using Jest and React Native Testing Library.
 
+<img src="https://github.com/seancheong/secured-todo-list-app/assets/13078313/a42af7a2-77d8-4b3b-bdb7-beb158b58b49" width=25% height=25%>
+
 ## Highlights
 
 - Developed using [Expo](https://docs.expo.dev), [React Native](https://reactnative.dev) and [Typescript](https://www.typescriptlang.org/)
